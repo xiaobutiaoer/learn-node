@@ -12,6 +12,7 @@ class ShopController {
     router.get('/:shopId', this.getOne)
     router.put('/:shopId', this.put)
     router.delete('/:shopId', this.delete)
+    return router
   }
 
   getAll = async (req, res) => {

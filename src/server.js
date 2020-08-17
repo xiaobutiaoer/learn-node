@@ -7,7 +7,11 @@ const server = express()
 const port = parseInt(process.env.PORT || '9000')
 const publicDir = resolve('public')
 
-console.log(initControllers)
+server.use('/api/shop', function (req, res, next) {
+  console.log('Request Type:', req.method)
+  next()
+})
+
 async function bootstrap() {
   server.use(express.static(publicDir))
   server.use(await initControllers())
@@ -15,4 +19,4 @@ async function bootstrap() {
   console.log(`> Started on port ${port}`)
 }
 
-bootstrap();
+bootstrap()

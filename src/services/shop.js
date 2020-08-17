@@ -11,7 +11,7 @@ async function delay (ms = 200) {
 }
 
 class ShopService {
-  async init() {
+  async init () {
     await delay()
   }
 

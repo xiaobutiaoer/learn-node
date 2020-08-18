@@ -14,6 +14,5 @@ module.exports = function urlnormalizeMiddleware () {
     } else {
       next()
     }
-    
   }
 }

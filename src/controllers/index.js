@@ -9,8 +9,8 @@ console.log(shopControllers)
 
 module.exports = async function initControllers () {
   const router = Router()
-  
-  router.use('./apu/health', await healthController())
+
+  router.use('./api/health', await healthController())
   router.use('/api/chaos', await chaosCotrollers())
 
   router.use('/api/shop', await shopControllers())

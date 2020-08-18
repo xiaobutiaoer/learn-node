@@ -2,6 +2,7 @@ const express = require('express')
 const { resolve } = require('path')
 const { promisify } = require('util')
 const initControllers = require('./controllers')
+const initMiddlewares = require('./middlewares')
 
 const server = express()
 const port = parseInt(process.env.PORT || '9000')
@@ -14,6 +15,8 @@ server.use('/api/shop', function (req, res, next) {
 
 async function bootstrap() {
   server.use(express.static(publicDir))
+  // 初始化中間件
+  server.use(await initMiddlewares())
   // 挂载路由，服务启动时初始化路由
   server.use(await initControllers())
   await promisify(server.listen.bind(server, port))()

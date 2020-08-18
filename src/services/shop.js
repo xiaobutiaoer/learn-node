@@ -39,6 +39,14 @@ class ShopService {
     if (!target) return false
     return delete memoryStorage[id]
   }
+
+  async create ({ values }) {
+    await delay()
+    const id = String(
+      1 + Object.keys(memoryStorage).reduce((m, id) => Math.max(m, id), -Infinity)
+    )
+    return { id, ...(memoryStorage[id] = values)}
+  }
 }
 
 // 单例模式

@@ -14,6 +14,7 @@ server.use('/api/shop', function (req, res, next) {
 
 async function bootstrap() {
   server.use(express.static(publicDir))
+  // 挂载路由，服务启动时初始化路由
   server.use(await initControllers())
   await promisify(server.listen.bind(server, port))()
   console.log(`> Started on port ${port}`)

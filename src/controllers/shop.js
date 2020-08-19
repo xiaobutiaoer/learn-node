@@ -52,8 +52,6 @@ class ShopController {
     const { shopId } = req.params
     const { name } = req.query
 
-    console.log(name)
-
     try {
       await createShopFormSchema().validate({name})
     } catch (e) {
@@ -65,11 +63,13 @@ class ShopController {
       id: shopId,
       values: { name }
     })
+
     if ( shopInfo ) {
       res.send({ success: true, data: shopInfo })
     } else {
       res.status(404).send({ success: false, data: null})
     }
+    
   })
 
   delete = async (req, res) => {
